@@ -1,0 +1,423 @@
+        *{
+            box-sizing: border-box;
+        }
+         @media (min-width:1022px){
+            .container{
+                width:80%;
+                margin: auto;
+            }
+            .header{
+                display: grid;
+                grid-template-columns: 20% 1fr;
+                margin-top : 2px;
+                border-bottom: 1px solid #cdcdcd;
+                background-color: #fff;
+                height: 75px;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .logo img{
+                width: auto;
+                height: 70px;
+                text-align: center;
+                white-space: nowrap;
+                padding: 4px;    
+            }
+            .mySearch{  
+                position: relative;
+                font-size: 16px;
+                color: #8f8f8f;
+                font-weight: 500;
+                height: 47px;
+                width: 100%;
+                border: 1px solid #cdcdcd;
+                border-radius: 3px;
+                box-shadow: 0 1px 3px 0 rgba(0,0,0,.08);
+                padding: 0 10px 0 37px;
+                box-sizing: border-box;
+                background-color: transparent;
+            }
+            .wrapper{
+                padding: 20px 0;
+                border-radius: 2px;
+                display: grid;
+                grid-auto-columns: 50% 50%;
+                grid-template-columns: 40% 60%;
+            }          
+              
+            .artist
+            {
+              background-color: #fff;
+              border-radius: 2px;
+              text-align: center;  
+              height: fit-content;  
+              
+              
+            }
+
+          .artists{
+            margin-right: 10px;
+              margin-left: 10px;
+              padding: 20px 10px;
+          }
+
+          .wrapper img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px;   
+            padding: 10px;
+           
+        }
+        .upcoming-events ul
+          {
+           border-bottom: offset;
+           text-decoration: black solid;
+           list-style-type: none;
+          }
+          .name{
+            font-weight: bold;
+            }
+            .tracker{
+                font-weight: 500;
+            }
+    
+  
+   .upcoming-events ul li:hover{
+    background-color: #cdcdcd; 
+  }
+  .upcoming-events ul li{
+  
+    padding:2px;
+    border-bottom: outset;
+    margin-top: 15px;
+   }
+   .events_123{
+    display: table-cell;
+    text-align: center;
+    column-gap: 20px;
+    padding-right:10px;
+    column-count: 2;
+    white-space: normal;
+    column-span: all;
+    padding-bottom: 2%;
+
+   }
+}
+/* Resolution for tablets i.e.,991px */
+@media  (max-width:991px)
+{
+    .container{
+        width:80%;
+        margin: auto;
+    }
+    .header{
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        margin-top : 2px;
+        border-bottom: 1px solid #cdcdcd;
+        background-color: #fff;
+        height: 75px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .logo img{
+        width: auto;
+        height: 70px;
+        text-align: center;
+        white-space: nowrap;
+        padding: 4px;    
+    }
+    .mySearch{  
+        position: relative;
+        font-size: 16px;
+        color: #8f8f8f;
+        font-weight: 500;
+        height: 47px;
+        width: 100%;
+        border: 1px solid #cdcdcd;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.08);
+        padding: 0 10px 0 37px;
+        box-sizing: border-box;
+        background-color: transparent;
+    }
+    .wrapper{
+        padding: 20px 0;
+        border-radius: 2px;
+       display:block;
+    }          
+      
+    .artist
+    {
+      background-color: #fff;
+      border-radius: 2px;
+      text-align: center;  
+      height: fit-content;  
+      
+      
+    }
+
+  .artists{
+    margin-right: 10px;
+      margin-left: 10px;
+      padding: 20px 10px;
+  }
+
+  .wrapper img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px;   
+    padding: 10px;
+   
+}
+.upcoming-events ul
+  {
+   border-bottom: offset;
+   text-decoration: black solid;
+   list-style-type: none;
+  }
+  .name{
+    font-weight: bold;
+    }
+    .tracker{
+        font-weight: 500;
+    }
+
+.upcoming-events ul li{
+
+padding:2px;
+border-bottom: outset;
+margin-top: 15px;
+}
+.events_123{
+display: table-cell;
+text-align: center;
+column-gap: 20px;
+padding-right:10px;
+column-count: 2;
+white-space: normal;
+column-span: all;
+padding-bottom: 5%;
+
+}
+
+}
+/* resolution between tablet and phablet */
+@media  (max-width:800px)
+{
+    .container{
+        width:80%;
+        margin: auto;
+    }
+    .header{
+        display: block; 
+        margin-top : 2px;
+        border-bottom: 1px solid #cdcdcd;
+        background-color: #fff;
+        height: 75px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .logo img{
+        width: 160px;
+        height: 70px;
+        text-align: center;
+        white-space: nowrap;
+        padding: 19px;
+        justify-content: center;
+        margin-left: 234px;
+        margin-right: 100px; 
+    }
+    .mySearch{  
+        position: relative;
+        font-size: 16px;
+        color: #8f8f8f;
+        font-weight: 500;
+        height: 47px;
+        width: 100%;
+        border: 1px solid #cdcdcd;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.08);
+        padding: 0 10px 0 37px;
+        box-sizing: border-box;
+        background-color: transparent;
+    }
+    .wrapper{
+        padding: 20px 0;
+        border-radius: 2px;
+        display: block;
+        margin-top: 50px;
+    
+    }          
+      
+    .artist
+    {
+      background-color: #fff;
+      border-radius: 2px;
+      text-align: center;  
+      height: fit-content;  
+      
+      
+    }
+
+  .artists{
+    margin-right: 10px;
+      margin-left: 10px;
+      padding: 20px 10px;
+  }
+
+  .wrapper img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px;   
+    padding: 10px;
+   
+}
+.upcoming-events ul
+  {
+   border-bottom: offset;
+   text-decoration: black solid;
+   list-style-type: none;
+  }
+  .name{
+    font-weight: bold;
+    }
+    .tracker{
+        font-weight: 500;
+    }
+
+
+.upcoming-events ul li{
+
+padding:2px;
+border-bottom: outset;
+margin-top: 15px;
+}
+.events_123{
+display: table-cell;
+text-align: center;
+column-gap: 20px;
+padding-right:10px;
+column-count: 2;
+white-space: normal;
+column-span: all;
+padding-bottom: 5%;
+
+}
+
+}
+/* resolution of a phone */
+@media  (max-width:441px)
+{
+    .container{
+        width:80%;
+        margin: auto;
+    }
+    .header{
+        display: block;
+        margin-top : 2px;
+        border-bottom: 1px solid #cdcdcd;
+        background-color: #fff;
+        height: 75px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .logo img{
+      width: auto;
+    height: 70px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 4px;
+    margin-right: 0px;
+    margin-left: 100px;
+    }
+    .mySearch{  
+        position: relative;
+        font-size: 16px;
+        color: #8f8f8f;
+        font-weight: 500;
+        height: 47px;
+        width: 100%;
+        border: 1px solid #cdcdcd;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.08);
+        padding: 0 10px 0 37px;
+        box-sizing: border-box;
+        background-color: transparent;
+    }
+    .wrapper{
+        padding: 20px 0;
+        border-radius: 2px;
+       display:block;
+    }          
+      
+    .artist
+    {
+      background-color: #fff;
+      border-radius: 2px;
+      text-align: center;  
+      height: fit-content;  
+      
+      
+    }
+
+  .artists{
+    margin-right: 10px;
+      margin-left: 10px;
+      padding: 20px 10px;
+  }
+
+  .wrapper img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px;   
+    padding: 10px;
+   
+}
+.upcoming-events ul
+  {
+   text-decoration: black solid;
+   list-style-type: none;
+  }
+  .name{
+    font-weight: bold;
+    }
+    .tracker{
+        font-weight: 500;
+    }
+
+
+.upcoming-events ul li:hover{
+background-color: #cdcdcd; 
+}
+.upcoming-events ul li{
+
+padding:2px;
+border-bottom: outset;
+margin-top: 15px;
+}
+.events_123{
+display: inline-block;
+text-align: left;
+column-gap: 10px;
+padding-right:3px;
+column-count: 1;
+white-space: normal;
+column-span: all;
+padding-bottom: 5%;
+
+}
+
+}
