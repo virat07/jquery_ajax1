@@ -1,32 +1,45 @@
 $(document).ready(function () {
-  
+  $(document).on('load', function () {
+
+    var check = localStorage.getItem('Artist');
+    if (check == null) {
+      $("#previousData").html('<div>' + Hello + New + User + '</div>');
+
+    }
+    else {
+      display();
+
+    }
+  });
+
   $("#mySearch").on('keyup', function (e) {
     var username = $("#mySearch").val();
-    console.log(username);
     if (username == '') {
-      $('#wrapper').css({'display':'none'});
+      $('#wrapper').css({ 'display': 'none' });
+      $('#previousData').show();
     }
     else {
       function timer() {
-        $("#artist,#upcoming-events").html('<div id="loader"><img src="loader.gif" alt="loading..."></div>');
-
-        var regex = new RegExp("^[a-zA-Z0-9]+$");
+        $("#loader").show();
+        var regex = new RegExp("^([a-zA-Z0-9_\s\-]*)$");
         if (!regex.test(username)) {
-          e.preventDefault();
+          alert("dont add special character");
           return false;
         }
-        else if (username == '') {
-          $('body').html("<h2>No User Info Found</h2>");
-        }
+
         else {
           requestXhr(username);
+          $('#loader').hide();
         }
-        $('#wrapper').css({'display':'grid'});        
+        $('#wrapper').css({ 'display': 'grid' });
+
       }
       setTimeout(timer, 2000);
+
+
     }
   });
-  
+
 });
 
 function requestXhr(username) {
@@ -65,7 +78,9 @@ function requestXhr(username) {
 
 
       $('#upcoming-events').html(outevents);
+
     } // end outputPageContent()
+
   });
 }
 function requestJson(url, callback) {
@@ -78,7 +93,8 @@ function requestJson(url, callback) {
 
       else {
         alert('error');
-        $('body').html("<h2> PLS TRY AGAIN</h2>")
+        $('#wrapper').html("<h2> PLS TRY AGAIN</h2>");
+        $('#loader').hide();
       }
     }, setTimeout: 3000
   });
@@ -93,13 +109,16 @@ function StoreToLocal(dp, fullname, tracker, fb_link) {
   display();
 }
 function display() {
-  var wrap = $('#wrapper').val();
   var disp = localStorage.getItem("Artist");
- 
+  $('#previousData').html('<div>Last Artist Name Searched:' + disp + '</div>').hide();
 }
 
-
-
+function show() {
+  $("#loader").css({ 'display': 'block' });
+}
+function hide() {
+  $('#loader').css({ 'display': 'none' });
+}
 
 // end click event handler
 

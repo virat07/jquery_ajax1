@@ -105,6 +105,12 @@
     padding-bottom: 2%;
 
    }
+   #loader{
+       display: none;
+   }
+   #previousData{
+       display:block;
+   }
 }
 /* Resolution for tablets i.e.,991px */
 @media  (max-width:991px)
