@@ -105,12 +105,7 @@
     padding-bottom: 2%;
 
    }
-   #loader{
-       display: none;
-   }
-   #previousData{
-       display:block;
-   }
+   
 }
 /* Resolution for tablets i.e.,991px */
 @media  (max-width:991px)
@@ -212,7 +207,12 @@ column-span: all;
 padding-bottom: 5%;
 
 }
-
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
+}
 }
 /* resolution between tablet and phablet */
 @media  (max-width:800px)
@@ -318,6 +318,12 @@ white-space: normal;
 column-span: all;
 padding-bottom: 5%;
 
+}
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
 }
 
 }
@@ -425,5 +431,10 @@ column-span: all;
 padding-bottom: 5%;
 
 }
-
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
+}
 }
