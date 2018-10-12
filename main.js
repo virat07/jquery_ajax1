@@ -1,16 +1,15 @@
 $(document).ready(function () {
-  $(document).on('load', function () {
-
-    var check = localStorage.getItem('Artist');
-    if (check == null) {
-      $("#previousData").html('<div>' + Hello + New + User + '</div>');
-
-    }
-    else {
-      display();
-
-    }
-  });
+  var check = localStorage.getItem('Artist');
+  if (!check) {
+    $("#usermsg").html('<h2>Hi new user</h2>');
+    $('#loader').hide();
+    
+  }
+  else {
+    display();
+    $('#usermsg').hide();   
+    $("loader").hide();
+  }
 
   $("#mySearch").on('keyup', function (e) {
     var username = $("#mySearch").val();
@@ -19,34 +18,31 @@ $(document).ready(function () {
       $('#previousData').show();
     }
     else {
-      function timer() {
-        $("#loader").show();
-        var regex = new RegExp("^([a-zA-Z0-9_\s\-]*)$");
-        if (!regex.test(username)) {
-          alert("dont add special character");
-          return false;
-        }
-
-        else {
-          requestXhr(username);
-          $('#loader').hide();
-        }
-        $('#wrapper').css({ 'display': 'grid' });
-
-      }
+      timer(username);
       setTimeout(timer, 2000);
-
-
     }
   });
 
 });
+function timer(username){
+  $("#loader").show();
+  var regex = new RegExp("^[a-zA-Z0-9_ ]*$");
+  if (!regex.test(username)) {
+    alert("dont add special character");
+    return false;
+  }
+  else {
+    requestXhr(username);
+    $('#loader').hide();
+  }
+  $('#wrapper').css({ 'display': 'grid' });
+
+}
 
 function requestXhr(username) {
   var requri = 'https://rest.bandsintown.com/artists/' + username + '?app_id="bharat"';
   var repouri = 'https://rest.bandsintown.com/artists/' + username + '/events?app_id="bharat"';
   requestJson(requri, function (json) {
-    // else we have a user and we display their info
     var dp = json.thumb_url;
     var fullname = json.name;
     var tracker = json.tracker_count;
@@ -77,9 +73,9 @@ function requestXhr(username) {
       }
 
 
-      $('#upcoming-events').html(outevents);
-
-    } // end outputPageContent()
+     $('#upcoming-events').html(outevents);
+   
+    } 
 
   });
 }
@@ -105,12 +101,19 @@ function StoreToLocal(dp, fullname, tracker, fb_link) {
   localStorage.setItem('Artist', fullname);
   localStorage.setItem('dp', dp);
   localStorage.setItem('trackers', tracker);
-  localStorage.setItem('fbLink', fb_link);
-  display();
+  localStorage.setItem('fbLink', fb_link);  
+  $("#previousData").css({'display':'none'});
 }
 function display() {
   var disp = localStorage.getItem("Artist");
-  $('#previousData').html('<div>Last Artist Name Searched:' + disp + '</div>').hide();
+  var dp = localStorage.getItem('dp');
+  var tracker = localStorage.getItem('trackers');
+  var fb = localStorage.getItem('fbLink');
+  $('#previousData').html('<div>'+"Previous Searches" + '<img style=" border-style: groove;" src="' + dp + '">' + '<p class ="name">' + disp + ' ' + '<span >' + '<a id="link" class = "fa fa-facebook" target="_blank" href=' + fb + '>' + '</a>' + '</span>' + '</p>' +
+
+  '<p class="tracker">' + tracker + ' Trackers' + '</p>' +
+  '</div>');
+
 }
 
 function show() {
@@ -120,26 +123,3 @@ function hide() {
   $('#loader').css({ 'display': 'none' });
 }
 
-// end click event handler
-
- // Use Microsoft XDR
-/*if ($.browser.msie && window.XDomainRequest) {
-    // Use Microsoft XDR
-    var xdr = new XDomainRequest();
-    xdr.open("get", "someurl");
-    xdr.onload = function () {
-    var JSON = $.parseJSON(xdr.responseText);
-    if (JSON == null || typeof (JSON) == 'undefined')
-    {
-        JSON = $.parseJSON(data.firstChild.textContent);
-    }
-    processData(JSON);
-    };
-    xdr.onprogress = function(){ };
-    xdr.ontimeout = function(){ };
-    xdr.onerror = function () { };
-    setTimeout(function(){
-        xdr.send();
-    }, 0);
-  }*/
-// function Storing to local storage 

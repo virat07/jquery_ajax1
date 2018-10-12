@@ -73,6 +73,7 @@
         }
         .upcoming-events ul
           {
+            
            border-bottom: offset;
            text-decoration: black solid;
            list-style-type: none;
@@ -102,15 +103,21 @@
     column-count: 2;
     white-space: normal;
     column-span: all;
-    padding-bottom: 2%;
-
-   }
-   #loader{
-       display: none;
-   }
-   #previousData{
-       display:block;
-   }
+    padding-bottom: 2%;       
+}
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
+    width: 40%;
+   
+}
+#previousData div{
+    margin:auto;    
+    margin-left: 120px;
+}
+   
 }
 /* Resolution for tablets i.e.,991px */
 @media  (max-width:991px)
@@ -212,7 +219,18 @@ column-span: all;
 padding-bottom: 5%;
 
 }
-
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
+    width: 65%;
+   
+}
+#previousData div{
+    margin:auto;    
+    margin-left: 30px;
+}
 }
 /* resolution between tablet and phablet */
 @media  (max-width:800px)
@@ -319,7 +337,18 @@ column-span: all;
 padding-bottom: 5%;
 
 }
-
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
+    width: 65%;
+   
+}
+#previousData div{
+    margin:auto;    
+    margin-left: 30px;
+}
 }
 /* resolution of a phone */
 @media  (max-width:441px)
@@ -346,7 +375,7 @@ padding-bottom: 5%;
     white-space: nowrap;
     padding: 4px;
     margin-right: 0px;
-    margin-left: 100px;
+    margin-left: 95px;
     }
     .mySearch{  
         position: relative;
@@ -425,5 +454,16 @@ column-span: all;
 padding-bottom: 5%;
 
 }
-
+#loader{
+    display: none;
+}
+#previousData{
+    display:block;
+    width: auto;
+   
+}
+#previousData div{
+    margin:auto;    
+    margin-left: 0px;
+}
 }
