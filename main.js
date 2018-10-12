@@ -3,11 +3,11 @@ $(document).ready(function () {
   if (!check) {
     $("#usermsg").html('<h2>Hi new user</h2>');
     $('#loader').hide();
-    
+
   }
   else {
     display();
-    $('#usermsg').hide();   
+    $('#usermsg').hide();
     $("loader").hide();
   }
 
@@ -19,12 +19,12 @@ $(document).ready(function () {
     }
     else {
       timer(username);
-      setTimeout(timer, 2000);
+      
     }
   });
 
 });
-function timer(username){
+function timer(username) {
   $("#loader").show();
   var regex = new RegExp("^[a-zA-Z0-9_ ]*$");
   if (!regex.test(username)) {
@@ -48,7 +48,7 @@ function requestXhr(username) {
     var tracker = json.tracker_count;
     var fb_link = json.facebook_page_url
     if (fullname == undefined) { fullname = username; }
-    var outhtml = '<div style=" border-style: groove;">' + '<img style=" border-style: groove;" src="' + dp + '">' + '<p class ="name">' + fullname + ' ' + '<span >' + '<a id="link" class = "fa fa-facebook" target="_blank" href=' + username.facebook_page_url + '>' + '</a>' + '</span>' + '</p>' +
+    var outhtml = '<div style=" border-style: groove;">' + '<img style=" border-style: groove;" src="' + dp + '">' + '<p class ="name">' + fullname + ' ' + '<span >' + '<a id="link" class = "fa fa-facebook" target="_blank" href=' + fb_link + '>' + '</a>' + '</span>' + '</p>' +
 
       '<p class="tracker">' + tracker + ' Trackers' + '</p>' +
       '</div>';
@@ -57,25 +57,8 @@ function requestXhr(username) {
     var events = '';
     $.getJSON(repouri, function (json) {
       events = json;
-      outputPageContent();
+      pagemore(events);
     });
-
-    function outputPageContent() {
-      var outevents = '';
-      if (events.length == 0) { outevents = outevents + '<p>No Upcoming Events!</p></div>'; }
-      else {
-
-        outevents = outevents + '<p><strong style="padding:34px;">Upcoming Events:</strong></p> <ul>';
-        $.each(events, function (index) {
-          outevents = outevents + '<li>' + '<span class="events_123">' + events[index].venue.city + '</span>' + '<span class="events_123">' + events[index].venue.country + '</span>' + '<span class="events_123">' + events[index].venue.name + '</span>' + '</li>';
-        });
-
-      }
-
-
-     $('#upcoming-events').html(outevents);
-   
-    } 
 
   });
 }
@@ -95,24 +78,32 @@ function requestJson(url, callback) {
     }, setTimeout: 3000
   });
 }
-
+function outputPageContent(paginationArray) {
+  var outevents = '';
+  outevents = outevents + '<p><strong style="padding:34px;">Upcoming Events:</strong></p> <ul>';
+  $.each(paginationArray, function (index) {
+    outevents = outevents + '<li>' + '<span class="events_123">' + paginationArray[index].venue.city + '</span>' + '<span class="events_123">' + paginationArray[index].venue.country + '</span>' + '<span class="events_123">' + paginationArray[index].venue.name + '</span>' + '</li>';
+  });
+  $('#upcoming-events').html(outevents);
+  $("#loadbtn").css({'display':'block'}); 
+}
 
 function StoreToLocal(dp, fullname, tracker, fb_link) {
   localStorage.setItem('Artist', fullname);
   localStorage.setItem('dp', dp);
   localStorage.setItem('trackers', tracker);
-  localStorage.setItem('fbLink', fb_link);  
-  $("#previousData").css({'display':'none'});
+  localStorage.setItem('fbLink', fb_link);
+  $("#previousData").css({ 'display': 'none' });
 }
 function display() {
   var disp = localStorage.getItem("Artist");
   var dp = localStorage.getItem('dp');
   var tracker = localStorage.getItem('trackers');
   var fb = localStorage.getItem('fbLink');
-  $('#previousData').html('<div>'+"Previous Searches" + '<img style=" border-style: groove;" src="' + dp + '">' + '<p class ="name">' + disp + ' ' + '<span >' + '<a id="link" class = "fa fa-facebook" target="_blank" href=' + fb + '>' + '</a>' + '</span>' + '</p>' +
+  $('#previousData').html('<div>' + "Previous Searches" + '<img style=" border-style: groove;" src="' + dp + '">' + '<p class ="name">' + disp + ' ' + '<span >' + '<a id="link" class = "fa fa-facebook" target="_blank" href=' + fb + '>' + '</a>' + '</span>' + '</p>' +
 
-  '<p class="tracker">' + tracker + ' Trackers' + '</p>' +
-  '</div>');
+    '<p class="tracker">' + tracker + ' Trackers' + '</p>' +
+    '</div>');
 
 }
 
@@ -121,5 +112,20 @@ function show() {
 }
 function hide() {
   $('#loader').css({ 'display': 'none' });
+} 
+$("#loadbtn").on('click', pagemore(events));
+function pagemore(events)
+{
+  var start = 0;
+  var end = 5;
+  var paginationArray = [];
+  if (events.length == 0) {
+    $("#upcoming-events").html("<h2>No User Data found</h2>");
+  }
+  else { 
+    var recoredDataLen = events.length;
+    console.log(recoredDataLen);
+    paginationArray = events.slice(start, end);
+    outputPageContent(paginationArray);
 }
-
+}

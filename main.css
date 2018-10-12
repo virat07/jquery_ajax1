@@ -84,7 +84,7 @@
             .tracker{
                 font-weight: 500;
             }
-    
+  
   
    .upcoming-events ul li:hover{
     background-color: #cdcdcd; 
@@ -116,6 +116,9 @@
 #previousData div{
     margin:auto;    
     margin-left: 120px;
+}
+#loadbtn{
+    display: none;
 }
    
 }
